@@ -1,26 +1,13 @@
 const express = require('express');
+let routesIndex = require('./routes/index');
+let routesUsers = require('./routes/users');
 
 let app = express();
 
-app.get('/', (req, res)=>{
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-    res.end('<h1>Olá!</h1>');
+app.use(routesIndex);
+app.use('/users',routesUsers);
 
+
+app.listen(3000, '127.0.0.1', () => {
+    console.log('servidor pronto!');
 });
-
-app.get('/users', (req, res)=>{
-    res.statusCode = 200;
-            res.setHeader('Content-Type', 'application/js');
-            res.json({
-                users:[{
-                    name: 'Gabriel',
-                    email: 'gabarros17@gmail.com',
-                    id: 1
-                }]
-            });
-});
-
-app.listen(3000, '127.0.0.1', ()=>{
-    console.log("Server running");
-})
