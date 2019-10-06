@@ -36,7 +36,9 @@ module.exports = (app) => {
 
                 app.utils.error.send(errors, req, res);
                 return false;
+
             }else{
+                
                 res.status(200).json(user);
 
             }
